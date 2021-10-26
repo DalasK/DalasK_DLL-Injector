@@ -1,6 +1,6 @@
 #define MAX_PATH 1000
 #include <Windows.h>
-#include <TlHelp32.h> //On va en avoir besoin pour utiliser la fonction CreateToolhelp32Snapshot                                         
+#include <TlHelp32.h> // on va en avoir besoin pour utiliser la fonction CreateToolhelp32Snapshot                                         
 #include <iostream>
 #include <string>
 
@@ -13,7 +13,7 @@ bool injection(DWORD id_de_processus, char* dllacces) // le processus d'injectio
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8); // dans la suite du code, j'utiliserais beaucoup cette fonction pour l'esthétique (gris)
 	cout << "Attachement du processus ............" << endl;
 	// on va définir un handle vers le processus où nous allons créer un nouveau thread et y injecter la dll 
-	HANDLE handletargetprocess = OpenProcess(PROCESS_ALL_ACCESS, false, id_de_processus); // Ouvre un processus local depuis son ID  
+	HANDLE handletargetprocess = OpenProcess(PROCESS_ALL_ACCESS, false, id_de_processus); // ouvre un processus local depuis son ID  
 
 	// la dll à injecter dans un processus est placé dans le système cible
 
