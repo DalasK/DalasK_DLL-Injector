@@ -4,7 +4,7 @@
 
 extern "C" __declspec(dllexport)
 
-DWORD WINAPI MessageBoxThread(LPVOID lpParam) { //MessageBox appellée dans DllMain sous la forme d'un thread.
+DWORD WINAPI MessageBoxThread(LPVOID lpParam) { // messageBox appellée dans DllMain sous la forme d'un thread.
 	
   MessageBox(NULL, "Coucou, l'injection a bien fonctionné! ", "Dll-test", MB_SYSTEMMODAL | MB_OK | MB_ICONINFORMATION);
   
