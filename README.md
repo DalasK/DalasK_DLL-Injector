@@ -2,7 +2,7 @@
 ![2021-10-26-19-27-44](https://user-images.githubusercontent.com/89702597/138931629-b4374044-f4c4-4063-a9df-81923c4e5eec.gif)
 Injection d'une dll test dans paint.exe (désolé pour vitesse lente du gif) :/
 
-# Qu'est-ce qu'un injecteur de dll ? 
+# FR : Qu'est-ce qu'un injecteur de dll ? 
 Il s'agit d'un programme (ou d'une action/attaque) consistant à injecter et exécuter du code (une bibliothèque de liens dynamiques [dll]) dans l'espace d'adressage d'un processus en cours d'exécution. Cela permet de modifier le comportement de ce programme, augmenter des droits d'autorité dessus ou bien ajouter des fonctionnalités externes. En outre, ce type d'injecteur peut être utilisé pour tricher dans un jeu vidéo (en chargeant une dll externe afin d'obtenir des avantages/privilèges) mais aussi pour nuire à un système informatique en injectant un code malveillant dans un processus essentiel à Windows. 
 
 # Comment ça fonctionne ?
@@ -23,9 +23,7 @@ En fait, l'injection se déroule en 5 étapes  :
 
 # ------------------------------------------------------------
 
-EN: Dll injector in the form of a console asking the user to enter a targeted process and the path of the dll to inject.
-
-# What is a dll injector ? 
+# EN : What is a dll injector ? 
 It is a program (or an action/attack) consisting in injecting and executing code (a dynamic link library [dll]) in the address space of a running process. This allows to modify the behavior of this program, to increase authority rights on it or to add external features. Moreover, this type of injector can be used to cheat in a video game (by loading an external dll in order to obtain advantages/privileges) but also to harm a computer system by injecting malicious code into a process essential to Windows. 
 
 # How does it work ?
