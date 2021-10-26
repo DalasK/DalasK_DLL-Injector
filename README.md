@@ -40,5 +40,5 @@ Actually, the injection takes place in 5 steps:
 5. The injector starts a remote thread by calling the LoadLibraryA function in order to load the code that will be executed within the process (CreateRemoteThread). 
 
 # Notes: 
-- Make sure that your DLL, the injector and the targeted program have the same architecture (x64 or x86)
+- Make sure that your DLL, the injector and the targeted program have the same architecture (x64 or x86).
 - I do not incite any application hacking and I am not responsible of what you will do with this injector (just go easy lol). 
