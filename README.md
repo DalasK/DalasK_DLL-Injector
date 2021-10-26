@@ -20,7 +20,7 @@ Notes ! :
 - Veillez à bien vérifier que votre DLL, l'injecteur et le programme ciblé ont tous les même architecture (x64 ou x86)
 /!\ Je n'incite aucunement au piratage d'application et ne suis pas responsable de ce que vous ferez de cet injecteur (allez-y molo quoi). 
 
-# ------------------------------------------------------------------
+# -------------------------------------------------------------------------
 
 EN: Dll injector in the form of a console asking the user to enter a targeted process and the path of the dll to inject.
 
