@@ -10,19 +10,19 @@ bool injection(DWORD id_de_processus, char* dllacces) // le processus d'injectio
 {
 	bool retour = false;
 	cout << "\n" << endl;
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8); // Dans la suite du code, j'utiliserais beaucoup cette fonction pour l'esthétique (gris)
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8); // dans la suite du code, j'utiliserais beaucoup cette fonction pour l'esthétique (gris)
 	cout << "Attachement du processus ............" << endl;
-	// On va définir un handle vers le processus où nous allons créer un nouveau thread et y injecter la dll 
+	// on va définir un handle vers le processus où nous allons créer un nouveau thread et y injecter la dll 
 	HANDLE handletargetprocess = OpenProcess(PROCESS_ALL_ACCESS, false, id_de_processus); // Ouvre un processus local depuis son ID  
 
-	//la dll à injecter dans un processus est placé dans le système cible
+	// la dll à injecter dans un processus est placé dans le système cible
 
 	if (handletargetprocess)
 	{
 		Sleep(25);
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2); // (vert)
 		cout << "Operation reussie!" << endl;
-		cout << "\n" << endl; //Saut à la ligne simple
+		cout << "\n" << endl; // saut à la ligne simple
 
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 		cout << "Allocation de la memoire en cours ........" << endl;
@@ -40,7 +40,7 @@ bool injection(DWORD id_de_processus, char* dllacces) // le processus d'injectio
 			cout << "Ecriture dans le processus de memoire.......... " << endl;
 			if (WriteProcessMemory(handletargetprocess, dllpathmemoryaddress, dllacces, strlen(dllacces), NULL))
 			{
-				//Le chemin d'accès où se trouve notre dll est copié dans l'adresse mémoire du processus
+				// le chemin d'accès où se trouve notre dll est copié dans l'adresse mémoire du processus
 				Sleep(100);
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
 				cout << "Operation reussie!" << endl;
@@ -50,7 +50,7 @@ bool injection(DWORD id_de_processus, char* dllacces) // le processus d'injectio
 				cout << "Chargement de la librairie ......" << endl;
 				//recherche la fonction LoadLibraryA qui permet de charger une DLL avec GetProcAddres : 
 				LPVOID 	librairies_adresses = GetProcAddress(GetModuleHandleA("kernel32.dll"), "LoadLibraryA"); // pour obtenir l’adresse de la fonction LoadLibraryA dans la bibliothèque kernel32.dll
-				// Chaque programme utilise la bibliothèque kernel32.dll, donc la meilleure façon d’injecter une DLL dans l’espace d’adressage du processus ciblé est de rechercher la fonction LoadLibraryA et de l’appeler
+				// chaque programme utilise la bibliothèque kernel32.dll, donc la meilleure façon d’injecter une DLL dans l’espace d’adressage du processus ciblé est de rechercher la fonction LoadLibraryA et de l’appeler
 				// (LoadLibraryA permettra de charger notre dll en mémoire au sein du processus ciblé) 
 				Sleep(200);
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
@@ -60,8 +60,8 @@ bool injection(DWORD id_de_processus, char* dllacces) // le processus d'injectio
 				SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 				cout << "Creation du thread distant pour la dll....." << endl;
 				HANDLE remotethread = CreateRemoteThread(handletargetprocess, NULL, 0, (LPTHREAD_START_ROUTINE)librairies_adresses, dllpathmemoryaddress, 0, NULL);
-				// J'ai utilisé CreateRemoteThread pour démarrer un nouveau thread distant dans l’espace d’adressage d’un processus
-				//permettant d'appeller la fonction LoadLibraryA dans l'espace d'adresses du processus ciblé pour y injecter la dll 
+				// j'ai utilisé CreateRemoteThread pour démarrer un nouveau thread distant dans l’espace d’adressage d’un processus
+				// permettant d'appeller la fonction LoadLibraryA dans l'espace d'adresses du processus ciblé pour y injecter la dll 
 
 				if (remotethread)
 				{
@@ -85,10 +85,10 @@ bool injection(DWORD id_de_processus, char* dllacces) // le processus d'injectio
 	return retour;
 }
 
-DWORD ProcessusID(LPCTSTR ProcessName) // On récupére l'ID du processus par son nom. Le but de cette partie du code est de retourner un message d'erreur si le nom du processus entré n'est pas en cours d'éxécution 
+DWORD ProcessusID(LPCTSTR ProcessName) // on récupére l'ID du processus par son nom. Le but de cette partie du code est de retourner un message d'erreur si le nom du processus entré n'est pas en cours d'éxécution 
 {
 	PROCESSENTRY32 pt;
-	HANDLE hsnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); // Récupère instantanément un processus ciblé, les modules & threads qui lui sont associés
+	HANDLE hsnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); // récupère instantanément un processus ciblé, les modules & threads qui lui sont associés
 	pt.dwSize = sizeof(PROCESSENTRY32); // renvoie la quantité de mémoire occupée par pt
 
 	if (Process32First(hsnap, &pt))
@@ -119,16 +119,18 @@ LPCTSTR SzToLPCTSTR(char* szString) // le chemin d'accès de notre DLL ciblé qu
 	size_t  size = strlen(szString) + 1;
 
 	lpszRet = (LPTSTR)malloc(MAX_PATH);
-	mbstowcs_s(NULL, lpszRet, size, szString, _TRUNCATE); // Convertit une séquence de caractères -> séquence de caractères larges.
+	mbstowcs_s(NULL, lpszRet, size, szString, _TRUNCATE); // convertit une séquence de caractères -> séquence de caractères larges.
 
 	return lpszRet;
 }
 
 int main()
 {
-	SetConsoleTitleA("Dall4sK Injector"); //Le titre de la fenêtre 
-	HWND hwnd = GetConsoleWindow();         //Le handle (la poignée) de la console
-	MoveWindow(hwnd, 0, 0, 700, 500, TRUE); //redimmensionnement de la console
+	SetConsoleTitleA("Dall4sK Injector"); // le titre de la fenêtre 
+	
+	HWND hwnd = GetConsoleWindow();// le handle de la console
+	MoveWindow(hwnd, 0, 0, 700, 500, TRUE); // redimmensionnement de la console
+	
 	char proc[MAX_PATH];
 	char* szDllPath = (char*)malloc(MAX_PATH); // le chemin d'accès de notre dll qui sera entré avant l'injection 
 	LPCTSTR Process = NULL;
@@ -154,6 +156,7 @@ int main()
 		DWORD id = ProcessusID(Process);
 		if (id == 0)
 		{
+	         //NULL
 		}
 		else // Entrées + injection 
 		{
@@ -166,7 +169,7 @@ int main()
 			cout << "Entrez le chemin d'acces de votre DLL: ";
 			cin >> szDllPath; // récupère le chemin d'accès de notre dll
 
-			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6); //(jaune)
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6); // (jaune)
 				cout << "\n" << endl;
 
 			cout << "Le chemin d'acces de votre DLL est : " << szDllPath << endl;
@@ -174,7 +177,7 @@ int main()
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 13); // (violet) 
 			cout << "Injection de la DLL (" << szDllPath << ") dans le processus en cours de fonctionnement (" << proc << ")........." << endl;
 			injection(id, szDllPath);
-			//Notre DLL est exécutée et commence à exécuter ses processus !
+			// notre DLL est exécutée et commence à exécuter ses processus !
 			cout << "\n" << endl;
 		}
 	}
