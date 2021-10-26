@@ -73,6 +73,7 @@ bool injection(DWORD id_de_processus, char* dllacces) // le processus d'injectio
 	}
 	Sleep(250);
 	CloseHandle(handletargetprocess); //ferme le handle 
+	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
 	cout << "Operation reussie!" << endl;
 	cout << "\n" << endl;
@@ -80,8 +81,10 @@ bool injection(DWORD id_de_processus, char* dllacces) // le processus d'injectio
 	Sleep(500);
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 	cout << "Injection de la DLL (" << dllacces << ") dans le processus (" << id_de_processus << ")...." << endl;
+	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 2);
 	cout << "La dll a bien ete injectee! " << endl;
+	
 	return retour;
 }
 
@@ -102,7 +105,9 @@ DWORD ProcessusID(LPCTSTR ProcessName) // on récupére l'ID du processus par so
 			}
 		} while (Process32Next(hsnap, &pt));
 	}
+	
 	CloseHandle(hsnap);
+	
 	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4); // (rouge)
 	cout << "\n" << endl;
 	cout << "------------------------------------------------------" << endl;
