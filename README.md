@@ -8,7 +8,7 @@ Il s'agit d'un programme (ou d'une action/attaque) consistant à injecter et ex�
 En fait, l'injection se déroule en 5 étapes  :
 1. Après l'entrée d'un processus ciblé par l'utilisateur, l'injecteur commence repérer ce processus ou la dll sera injectée (OpenProcess).
 
-2. Il alloue ensuite un espace de mémoire dans la zone d'adressage du processus ciblé (la taille de cet espace doit être suffisamment grande pour supporter le code à injecter). (VirtualAlloc) 
+2. Il alloue ensuite un espace de mémoire dans la zone d'adressage du processus ciblé (la taille de cet espace doit être suffisamment grande pour supporter le code à injecter). (VirtualAlloc).
 
 3. Une fois cette espace alloué, l'injecteur demande à l'utilisateur le chemin d'accès de sa dll et l'écrit ensuite vers l'espace d'adressage (WriteProcessMemory).
 
@@ -31,7 +31,7 @@ It is a program (or an action/attack) consisting in injecting and executing code
 Actually, the injection takes place in 5 steps:
 1. After the entry of a process targeted by the user, the injector starts to locate this process where the dll will be injected (OpenProcess).
 
-2. It then allocates a memory space in the address area of the targeted process (the size of this space must be large enough to support the code to be injected). (VirtualAlloc) 
+2. It then allocates a memory space in the address area of the targeted process (the size of this space must be large enough to support the code to be injected). (VirtualAlloc). 
 
 3. Once this space is allocated, the injector asks the user for the path of his dll and then writes it to the address space (WriteProcessMemory).
 
