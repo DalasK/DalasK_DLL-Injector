@@ -38,7 +38,7 @@ bool injection(DWORD id_de_processus, char* dllacces) // le processus d'injectio
 
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 8);
 			cout << "Ecriture dans le processus de memoire.......... " << endl;
-            if (WriteProcessMemory(handletargetprocess, dllpathmemoryaddress, dllacces, strlen(dllacces), NULL))
+                       if (WriteProcessMemory(handletargetprocess, dllpathmemoryaddress, dllacces, strlen(dllacces), NULL))
 			{
 				//Le chemin d'accès où se trouve notre dll est copié dans l'adresse mémoire du processus
 				Sleep(100);
@@ -90,9 +90,10 @@ DWORD ProcessusID(LPCTSTR ProcessName) // On récupére l'ID du processus par so
 	PROCESSENTRY32 pt;
 	HANDLE hsnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0); // Récupère instantanément un processus ciblé, les modules & threads qui lui sont associés
 	pt.dwSize = sizeof(PROCESSENTRY32); // renvoie la quantité de mémoire occupée par pt
-	if (Process32First(hsnap, &pt))
-	{
-        do {
+	
+	 if (Process32First(hsnap, &pt))
+	  {
+           do {
 
 			if (!lstrcmpi(pt.szExeFile, ProcessName))
 			{
@@ -108,8 +109,9 @@ DWORD ProcessusID(LPCTSTR ProcessName) // On récupére l'ID du processus par so
 	cout << "| [Erreur] Impossible de trouver l'ID de ce processus!| " << endl;
 	cout << "------------------------------------------------------" << endl;
 	cout << "\n" << endl;
+	
 	return 0;
-}
+    }
 // static string szString ?
 LPCTSTR SzToLPCTSTR(char* szString) // le chemin d'accès de notre DLL ciblé qui pourra être copier et entré dans la console
 {
