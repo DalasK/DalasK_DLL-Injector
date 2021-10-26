@@ -12,7 +12,7 @@ En fait, l'injection se déroule en 5 étapes  :
 
 3. Une fois cette espace alloué, l'injecteur demande à l'utilisateur le chemin d'accès de sa dll et l'écrit ensuite vers l'espace d'adressage (WriteProcessMemory).
 
-4.Il recherche ensuite la fonction LoadLibraryA qui permet de charger une DLL avec GetProcAddress().
+4. Il recherche ensuite la fonction LoadLibraryA qui permet de charger une DLL avec GetProcAddress().
 
 5. L'injecteur démarre un thread distant en y appellant la fonction LoadLibraryA afin de charger le code qui s'éxcutera au sein du processus (CreateRemoteThread). 
 
