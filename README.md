@@ -16,7 +16,7 @@ En fait, l'injection se déroule en 5 étapes  :
 
 5. L'injecteur démarre un thread distant en y appellant la fonction LoadLibraryA afin de charger le code qui s'éxcutera au sein du processus (CreateRemoteThread). 
 
-Notes /!\: 
+# Notes: 
 - Veillez à bien vérifier que votre DLL, l'injecteur et le programme ciblé ont tous les même architecture (x64 ou x86).
 - Je n'incite aucunement au piratage d'application et ne suis pas responsable de ce que vous ferez de cet injecteur (allez-y molo quoi). 
 
@@ -39,6 +39,6 @@ Actually, the injection takes place in 5 steps:
 
 5. The injector starts a remote thread by calling the LoadLibraryA function in order to load the code that will be executed within the process (CreateRemoteThread). 
 
-# Notes /!\: 
+# Notes: 
 - Make sure that your DLL, the injector and the targeted program have the same architecture (x64 or x86)
 - I do not incite any application hacking and I am not responsible of what you will do with this injector (just go easy lol). 
