@@ -1,5 +1,6 @@
 # DalasK_DLL-Injector
-FR : Injecteur de dll se présentant sous la forme d'une console demandant à l'utilisateur de rentrer un processus ciblé et le chemin d'accès de la dll à injecter.
+![2021-10-26-19-27-44](https://user-images.githubusercontent.com/89702597/138931629-b4374044-f4c4-4063-a9df-81923c4e5eec.gif)
+Injection d'une dll test dans paint.exe
 
 # Qu'est-ce qu'un injecteur de dll ? 
 Il s'agit d'un programme (ou d'une action/attaque) consistant à injecter et exécuter du code (une bibliothèque de liens dynamiques [dll]) dans l'espace d'adressage d'un processus en cours d'exécution. Cela permet de modifier le comportement de ce programme, augmenter des droits d'autorité dessus ou bien ajouter des fonctionnalités externes. En outre, ce type d'injecteur peut être utilisé pour tricher dans un jeu vidéo (en chargeant une dll externe afin d'obtenir des avantages/privilèges) mais aussi pour nuire à un système informatique en injectant un code malveillant dans un processus essentiel à Windows. 
